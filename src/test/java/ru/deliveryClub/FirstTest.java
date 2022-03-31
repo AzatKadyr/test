@@ -6,16 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FirstTest {
+public class FirstTest extends WebDriverSettings {
 
-    public ChromeDriver driver;
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver","C:\\chrome\\chromedriver.exe");
-        driver = new ChromeDriver();
-        System.out.println("test start");
-    }
     @Test
     public void firstTest() {
 
@@ -36,10 +29,6 @@ public class FirstTest {
 
     }
 
-    @After
-    public void close() {
-        driver.quit();
-        System.out.println("test close");
-    }
+
 
 }
