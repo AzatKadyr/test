@@ -1,10 +1,6 @@
-package ru.deliveryClub;
-import org.junit.After;
+package ru.mundaworld;
 import org.junit.Assert;
-import org.junit.Before;
-import org.openqa.selenium.WebDriver;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 
 public class FirstTest extends WebDriverSettings {
@@ -27,7 +23,7 @@ public class FirstTest extends WebDriverSettings {
 
         String title = driver.getTitle();
 
-        driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("7052418077");
+        driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("7029677226");
         driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys("180323");
         driver.findElement(By.xpath("//button[@class = 'button -orange mt-48']")).click();
 
@@ -50,8 +46,8 @@ public class FirstTest extends WebDriverSettings {
     public void manualTest() {
 
         firstTest2();
-        driver.get("http://mundaworld.com/products/3/508cf800-8e26-11ec-8354-294afdd4d882");
-        driver.get(driver.getCurrentUrl());
+        //driver.get("http://mundaworld.com/products/3/508cf800-8e26-11ec-8354-294afdd4d882");
+        //driver.get(driver.getCurrentUrl());
 
     }
 
