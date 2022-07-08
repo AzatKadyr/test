@@ -2,6 +2,12 @@ package ru.mundaworld;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class FirstTest extends WebDriverSettings {
@@ -33,7 +39,7 @@ public class FirstTest extends WebDriverSettings {
 
     @Test
     public void testNomen(){
-
+        //firstTest2();
         driver.get("https://mundamarket.kz/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//img[@class = 'product_img']")).click();
@@ -45,12 +51,20 @@ public class FirstTest extends WebDriverSettings {
     @Test
     public void testRegistr() {
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://mundaworld.com/registration");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        /*WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
+        */
         driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("7052418079");
         driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        //WebElement input = driver.findElement(By.cssSelector());
+
         driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys("Azat");
         driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys("Kadyr");
         driver.findElement(By.xpath("//input[contains(@type, 'email')]")).sendKeys("9677226@mail.rur");
@@ -67,9 +81,20 @@ public class FirstTest extends WebDriverSettings {
     @Test
     public void manualTest() {
 
-        firstTest2();
+
+        testNomen();
         //driver.get("http://mundaworld.com/products/3/508cf800-8e26-11ec-8354-294afdd4d882");
         //driver.get(driver.getCurrentUrl());
+
+    }
+
+
+    @Test
+    public void testTest() {
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("http://mundaworld.com/");
+
 
     }
 
