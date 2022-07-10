@@ -3,8 +3,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -49,7 +51,7 @@ public class FirstTest extends WebDriverSettings {
 
     }
     @Test
-    public void testRegistr() {
+    public void testRegistr() throws InterruptedException {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://mundaworld.com/registration");
@@ -66,15 +68,26 @@ public class FirstTest extends WebDriverSettings {
         //WebElement input = driver.findElement(By.cssSelector());
 
         driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys("Azat");
-        driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys("Kadyr");
+        driver.findElement(By.xpath("//span[contains(text(), 'Фамилия')]/following-sibling::input")).sendKeys("Kadyr");
         driver.findElement(By.xpath("//input[contains(@type, 'email')]")).sendKeys("9677226@mail.rur");
         driver.findElement(By.xpath("//input[contains(@type, 'checkbox')]")).click();
         driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
+        Thread.sleep(1000);
 
-        //driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("4");
+       driver.findElement(By.className("multiselect")).click();
+        Thread.sleep(1000);
+       driver.findElement(By.className("multiselect__element")).click();
+        /*
+        Select sel = new Select(ele);
 
-        //driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("4");
+        sel.selectByIndex(0);
+
+
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(element).click();*/
+
  }
 
 
