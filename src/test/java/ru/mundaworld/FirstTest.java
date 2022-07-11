@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+
 public class FirstTest extends WebDriverSettings {
 
 
@@ -55,12 +56,13 @@ public class FirstTest extends WebDriverSettings {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://mundaworld.com/registration");
+
+        driver.manage().window().maximize();
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        /*WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
-        */
-        driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("7052418079");
+
+        driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys("7052418070");
         driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
 
@@ -68,25 +70,40 @@ public class FirstTest extends WebDriverSettings {
         //WebElement input = driver.findElement(By.cssSelector());
 
         driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys("Azat");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//span[contains(text(), 'Фамилия')]/following-sibling::input")).sendKeys("Kadyr");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//input[contains(@type, 'email')]")).sendKeys("9677226@mail.rur");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//input[contains(@type, 'checkbox')]")).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
         Thread.sleep(1000);
 
-       driver.findElement(By.className("multiselect")).click();
+        driver.findElement(By.className("multiselect")).click();
         Thread.sleep(1000);
-       driver.findElement(By.className("multiselect__element")).click();
-        /*
-        Select sel = new Select(ele);
+        driver.findElement(By.className("multiselect__element")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[2]/div")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[2]/div/div[3]/ul/li[10]/span")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//span[contains(text(), 'Адрес*')]/following-sibling::input")).sendKeys("Тестовый адрес");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//span[contains(text(), 'Почтовый индекс')]/following-sibling::input")).sendKeys("050000");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
-        sel.selectByIndex(0);
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[1]/div/input")).sendKeys("123456");
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[1]/div/div")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[2]/div/input")).sendKeys("123456");
+        driver.findElement(By.xpath("//*[@id=\"authLayout\"]/div/div/div/div[2]/div[4]/div[2]/div/div")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
-
-        Actions actions = new Actions(driver);
-
-        actions.moveToElement(element).click();*/
 
  }
 
