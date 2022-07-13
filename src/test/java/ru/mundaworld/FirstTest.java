@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import java.util.Random;
 
 
 public class FirstTest extends WebDriverSettings {
@@ -34,24 +35,17 @@ public class FirstTest extends WebDriverSettings {
 
     }
 
-    @Test
-    public void testNomen(){
-        //firstTest2();
-        driver.get("https://mundamarket.kz/");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//img[@class = 'product_img']")).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
-
-    }
     @Test
     public void testRegistr() throws InterruptedException {
+        String phone = getRandomPhone();
+        String email = getRandomEmail();
 
-        String email = "96775asassdsd55@mail.ruw";
-        String phone = "79978585544";
-        String name  = "Azat";
-        String surname = "Test";
+        System.out.println(email);
+
+        String name  = "Тестовый";
+        String surname = "Аккаунт";
         String adress = "Markova 75";
         String postindex = "050000";
         String password = "Qwerty123@";
@@ -116,16 +110,6 @@ public class FirstTest extends WebDriverSettings {
 
  }
 
-
-    @Test
-    public void manualTest() {
-
-
-        testNomen();
-        //driver.get("http://mundaworld.com/products/3/508cf800-8e26-11ec-8354-294afdd4d882");
-        //driver.get(driver.getCurrentUrl());
-
-    }
 
 
     @Test
