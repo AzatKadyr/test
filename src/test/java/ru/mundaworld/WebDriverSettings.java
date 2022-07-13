@@ -2,8 +2,12 @@ package ru.mundaworld;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 public class WebDriverSettings {
@@ -18,7 +22,7 @@ public class WebDriverSettings {
 
     @After
     public void close() {
-        //driver.quit();
+        driver.quit();
         System.out.println("test close");
     }
 
@@ -30,7 +34,7 @@ public class WebDriverSettings {
             phoneNumber.append(s.charAt(new Random().nextInt(s.length())));
         }
 
-        String phone = "7787"+phoneNumber.toString();
+        String phone = "787"+phoneNumber.toString();
         return phone;
     }
 
@@ -45,4 +49,7 @@ public class WebDriverSettings {
         String email = phoneNumber.toString()+"@test-munda.kz";
         return email;
     }
+
+
+
 }

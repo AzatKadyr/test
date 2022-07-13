@@ -1,10 +1,19 @@
 package ru.mundaworld;
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.Random;
+
 import static ru.mundaworld.variable.*;
 
 public class FirstTest extends WebDriverSettings {
@@ -13,7 +22,7 @@ public class FirstTest extends WebDriverSettings {
     @Test
     public void testRegistr() throws InterruptedException {
 
-
+        //
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://mundaworld.com/registration");
 
@@ -24,6 +33,8 @@ public class FirstTest extends WebDriverSettings {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.findElement(By.xpath("//input[contains(@type, 'tel')]")).sendKeys(phone);
+        Thread.sleep(6000);
+        System.out.println(phone);
         driver.findElement(By.xpath("//button[@class = 'button -orange button-position mt-48']")).click();
 
         driver.findElement(By.xpath("//input[contains(@type, 'text')]")).sendKeys(name);
@@ -69,7 +80,49 @@ public class FirstTest extends WebDriverSettings {
 
 
 
+
  }
 
+
+ @Test
+    public void deleteuSER() throws InterruptedException {
+
+
+
+     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+     driver.get("http://admin.mundamarket.kz/");
+
+     Date dateNow = new Date();
+     SimpleDateFormat format = new SimpleDateFormat("hh_mm_ss");
+     String fileName = format.format(dateNow) + ".png";
+     File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+     try {
+         FileUtils.copyFile(screenshot, new File("C:\\screenshot\\" + fileName));
+     } catch (IOException e) {
+         e.printStackTrace();
+     }
+
+     driver.manage().window().maximize();
+
+     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+     driver.findElement(By.id("emailaddress")).sendKeys(admin);
+     Thread.sleep(1000);
+     driver.findElement(By.id("password")).sendKeys(passwordadmin);
+     Thread.sleep(3000);
+     driver.findElement(By.xpath("//button[@class = 'btn btn-primary btn-block']")).click();
+     Thread.sleep(3000);
+     driver.get("http://admin.mundamarket.kz/users/buyers");
+     Thread.sleep(1000);
+     driver.findElement(By.id("membersearch-input")).sendKeys(phone);
+     driver.findElement(By.id("membersearch-input")).sendKeys(Keys.ENTER);
+     Thread.sleep(2500);
+
+     driver.findElement(By.xpath("//a[contains(text(), 'Изменить')]/following-sibling::button")).click();
+
+
+     close();
+
+ }
 
 }
