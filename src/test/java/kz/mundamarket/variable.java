@@ -1,11 +1,13 @@
 
-package ru.mundaworld;
+package kz.mundamarket;
 
-abstract class variable extends FirstTest{
+import org.openqa.selenium.WebDriver;
+
+abstract class variable extends buyer{
 
 
     public static final String baseUrl = "http://mundaworld.com/";
-    public static final String registrationUrl = "http://mundaworld.com/registration";
+    public static final String registrationUrl = "registration";
     public static final String adminCabinetUrl = "http://admin.mundamarket.kz/";
 
     public static final String phone = getRandomPhone();
@@ -23,4 +25,8 @@ abstract class variable extends FirstTest{
     public static final String downloadsFolder = "out/downloads";
 
     public static final String screenShotsFolder = "out/screenShots";
+
+    public variable(WebDriver driver) {
+        super(driver);
+    }
 }
