@@ -6,10 +6,13 @@ public class RunTests extends FirstTest{
 
     @Test
     public void RunTest() throws InterruptedException {
-        //1.1 Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕРєСѓРїР°С‚РµР»СЏ
+        //1.1 Регистрация покупателя
         testRegistr();
-
-        //РЈРґР°Р»РµРЅРёРµ СЃРѕР·РґР°РЅРЅРѕРіРѕ РїРѕРєСѓРїР°С‚РµР»СЏ
+        //Выход из аккаунта
+        logOutUser();
+        //Авторизация пользователя
+        authUser();
+        //Удаление созданного покупателя
         deleteuSER();
 
     }

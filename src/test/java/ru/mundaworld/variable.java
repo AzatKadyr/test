@@ -1,11 +1,17 @@
 package ru.mundaworld;
 
 abstract class variable extends FirstTest{
+
+
+    public static final String baseUrl = "http://mundaworld.com/";
+    public static final String registrationUrl = "http://mundaworld.com/registration";
+    public static final String adminCabinetUrl = "http://admin.mundamarket.kz/";
+
     public static final String phone = getRandomPhone();
     public static final String email = getRandomEmail();
 
-    public static final String name  = "РўРµСЃС‚РѕРІС‹Р№";
-    public static final String surname = "РђРєРєР°СѓРЅС‚";
+    public static final String name  = "Тестовый";
+    public static final String surname = "Аккаунт";
     public static final String adress = "Markova 75";
     public static final String postindex = "050000";
     public static final String password = "Qwerty123@";
