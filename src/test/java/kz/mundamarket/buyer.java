@@ -42,6 +42,8 @@ public class buyer{
 
     public buyer(WebDriver driver) {this.driver = driver;}
 
+    // Ёлементы страницы регистрации
+
     @FindBy(xpath = "//input[contains(@type, 'tel')]")
     @CacheLookup
     private WebElement userPhone;
@@ -57,6 +59,10 @@ public class buyer{
     @FindBy(xpath = "//button[@class = 'button -orange button-position mt-48']")
     @CacheLookup
     private WebElement buttonNext2;
+
+    @FindBy(xpath = "//button[@class = 'button -orange button-position mt-48']")
+    @CacheLookup
+    private WebElement finishRegBtn;
 
     @FindBy(xpath = "//input[contains(@type, 'text')]")
     @CacheLookup
@@ -106,10 +112,27 @@ public class buyer{
     @CacheLookup
     private WebElement userPasswordRepeat;
 
+    @FindBy(xpath = "//div[contains(@class, 'errors')]")
+    @CacheLookup
+    private WebElement getAlert;
+
+    @FindBy(xpath = "//div[contains(@class, 'registration__form_title')]")
+    @CacheLookup
+    private WebElement getTitleDiv;
+
     public void open(String pageurl) {
         driver.get(baseUrl+ pageurl);
         driver.manage().window().maximize();
     }
+
+
+    // Ёлементы страницы регистрации
+
+
+
+
+    // Ёлементы страницы регистрации
+
 
     public void insertPhone(String phone) {
         userPhone.sendKeys(phone);
@@ -141,6 +164,28 @@ public class buyer{
 
     public void clickBtnNext2() {
         buttonNext2.click();
+    }
+
+    public void clickBtnNext3() {
+        finishRegBtn.click();
+    }
+
+    public void checkErrors(String actual)  throws Exception {
+            assertEquals(getAlert.getText(), actual);
+            System.out.println("ќшибка: " + getAlert.getText());
+            getpost("ќшибка: " + getAlert.getText());
+
+
+    }
+
+    public void checkErrorsTitle(String actual)  throws Exception {
+        assertEquals(getTitleDiv.getText(), actual);
+
+            System.out.println("ќшибка: " + getTitleDiv.getText());
+            getpost("ќшибка: " + getTitleDiv.getText());
+
+
+
     }
 
     public void insertPassword(String password) {
@@ -176,6 +221,17 @@ public class buyer{
         userEmail.sendKeys(email);
     }
 
+    public void checkCurrentUrl(String pageUrl) throws Exception {
+        System.out.println("ѕроверка страницы");
+        assertEquals(pageUrl, driver.getCurrentUrl());
+        getpost("ѕроизошла ошибка в тестировании");
+    }
+
+
+    // Ёлементы страницы регистрации
+
+
+
     public static String getRandomPhone() {
         String s = "123456789";
         StringBuffer phoneNumber = new StringBuffer();
@@ -204,7 +260,7 @@ public class buyer{
         Thread.sleep(millis);
     }
 
-    public void screenShots(int a) {
+    public void screenShots(String name) {
         Date dateNow = new Date();
         SimpleDateFormat format = new SimpleDateFormat("hh_mm_ss");
         String fileName = format.format(dateNow) + ".png";
@@ -212,11 +268,16 @@ public class buyer{
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenshotFile, new File
-                    (downloadsFolder + "\\AuthPageScreenshot " + fileName));
+                    (downloadsFolder + "\\A" + name + fileName));
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void deleteAllFilesFolder() {
+        for (File myFile : new File(downloadsFolder).listFiles())
+            if (myFile.isFile()) myFile.delete();
     }
 
     public void getpost(String textlog) throws Exception {
@@ -242,7 +303,7 @@ public class buyer{
         }
     }
 
-
+/*
     public void uploadImg(){
 
         String urlAdress = "https://api.kex888.kz/sendtestlog.php?textlog=azaz";
@@ -298,6 +359,6 @@ public class buyer{
 
 
     }
-
+*/
 
 }

@@ -9,10 +9,11 @@ public class buyerAuthTest extends WebDriverSettings{
 
     @Test
     public void regBuyer() throws Exception {
-        buyer bayerPage = PageFactory.initElements(driver, buyer.class);
 
-        bayerPage.getpost("Тестирование начато");
-        bayerPage.uploadImg();
+        String testcase = "1.1 Регистрация покупателя (Ожидаемое поведение системы)";
+        buyer bayerPage = PageFactory.initElements(driver, buyer.class);
+        deleteAllFilesFolder();
+        bayerPage.getpost("Тест кейс №"+ testcase +" Тестирование начато");
 
         bayerPage.open(registrationUrl);
         bayerPage.insertPhone(phone);
@@ -26,7 +27,7 @@ public class buyerAuthTest extends WebDriverSettings{
         bayerPage.sleep(1000);
         bayerPage.clickIagree();
         bayerPage.sleep(1000);
-        bayerPage.screenShots(1);
+        bayerPage.screenShots(testcase);
         bayerPage.clickBtnNext();
 
         bayerPage.sleep(1000);
@@ -43,15 +44,36 @@ public class buyerAuthTest extends WebDriverSettings{
         bayerPage.sleep(1000);
         bayerPage.insertPostIndex(postindex);
         bayerPage.clickBtnNext2();
-        bayerPage.screenShots(1);
+        bayerPage.screenShots(testcase);
 
         bayerPage.sleep(1000);
         bayerPage.insertPassword(password);
         bayerPage.sleep(1000);
         bayerPage.insertPassword2(password);
-        bayerPage.screenShots(1);
+        bayerPage.screenShots(testcase);
+        bayerPage.sleep(1000);
+        bayerPage.clickBtnNext3();
+        bayerPage.sleep(3000);
+        bayerPage.checkCurrentUrl(baseUrl);
+        bayerPage.getpost("Тест кейс №"+ testcase +" Тестирование успешно завершено");
 
-        bayerPage.getpost("Тест прошел успешно. Тест кейс №");
+    }
+
+
+    @Test
+    public void regBuyerErrorFalsePhone() throws Exception {
+
+        String testcase = "1.1 Регистрация покупателя (Ошибочные данные)";
+        buyer bayerPage = PageFactory.initElements(driver, buyer.class);
+
+        bayerPage.getpost("Тест кейс №"+ testcase +" Тестирование начато");
+
+        bayerPage.open(registrationUrl);
+        bayerPage.insertPhone(falsePhone);
+        bayerPage.clickBtn();
+        bayerPage.sleep(3000);
+        bayerPage.getpost("Тест кейс №"+ testcase +" Тестирование успешно завершено");
+        bayerPage.screenShots(testcase);
 
     }
 
